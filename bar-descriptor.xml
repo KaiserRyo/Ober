@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+
+    <id>com.nemory.ober</id>
+    <configuration name="Device-Debug">
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset entryPointId="Ober" path="arm/o.le-v7-g/OberApp" entry="true" type="Qnx/Elf">OberApp</asset>
+    </configuration>
+    <configuration name="Device-Release">
+       <entryPointType>Qnx/Cascades</entryPointType>
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset entryPointId="Ober" path="arm/o.le-v7/OberApp.so" entry="true" type="Qnx/Elf">OberApp.so</asset>
+    </configuration>
+    <configuration name="Device-Profile">
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset entryPointId="Ober" path="arm-p/o.le-v7-g/OberApp" entry="true" type="Qnx/Elf">OberApp</asset>
+    </configuration>
+    <configuration name="Simulator-Debug">
+       <platformArchitecture>x86</platformArchitecture>
+       <asset entryPointId="Ober" path="x86/o-g/OberApp" entry="true" type="Qnx/Elf">OberApp</asset>
+    </configuration>
+
+    <name>Ober</name>
+    <buildId>1</buildId>
+    <versionNumber>1.2.0</versionNumber>
+    <description>The Ober application</description>
+    
+    <icon>
+       <image>icon.png</image>
+    </icon>
+    <splashScreens>
+       <image>Q10Splash.png</image>
+       <image>Z10Splash.png</image>
+       <image>Z30Splash.png</image>
+       <image>splashPassport.jpg</image>
+    </splashScreens>
+    <author>Nemory Studios</author>
+
+    <initialWindow>
+        <autoOrients>true</autoOrients>
+        <systemChrome>none</systemChrome>
+    </initialWindow>
+
+    <asset path="assets">assets</asset>
+
+    <asset path="translations" dest="qm">
+        <include name="*.qm"/>
+    </asset>
+    
+    <asset path="assets/images/icon.png">icon.png</asset>
+    <asset path="assets/images/Q10Splash.png">Q10Splash.png</asset>
+    <asset path="assets/images/Z10Splash.png">Z10Splash.png</asset>
+    <asset path="assets/images/Z30Splash.png">Z30Splash.png</asset>
+    <asset path="assets/images/splashPassport.jpg">splashPassport.jpg</asset>
+
+    <permission system="true">run_native</permission>
+    <permission>access_internet</permission>
+    <permission>access_location_services</permission>
+    <permission>read_device_identifying_information</permission>
+    <permission>run_when_backgrounded</permission>
+    <permission>post_notification</permission>
+    <permission>bbm_connect</permission>
+    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+    <env var="CASCADES_THEME" value="dark"/>
+    
+    <!-- NOTIFICATION INVOCATION-->
+    
+    <entryPoint id="Ober">
+		<name>Ober</name>
+	</entryPoint>
+    
+    <invoke-target id="com.nemory.ober.invoke.open">
+      <invoke-target-type>application</invoke-target-type>
+      <entry-point-id>Ober</entry-point-id>
+      <filter>
+         <action>bb.action.OPEN</action>
+         <mime-type>text/plain</mime-type>
+      </filter>
+    </invoke-target>
+
+</qnx>
